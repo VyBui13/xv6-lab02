@@ -1,0 +1,13 @@
+1. Looking at the backtrace output, which function called syscall?
+=> Answer: usertrap() at kernel/trap.c:67
+2. Type n a few times to step past struct proc *p = myproc(); Once past this statement, type p /x *p, which prints the current process's proc struct (see kernel/proc.h>) in hex.
+What is the value of p->trapframe->a7 and what does that value represent?
+=> Answer: 7 (p->trapframe->a7)
+3. What was the previous mode that the CPU was in?
+=> Answer: user mode
+4. Write down the assembly instruction the kernel is panicing at. Which register corresponds to the variable num?
+=> Answer: a3
+5. Why does the kernel crash (num = * (int *) 0)?
+=> Answer: This command is compiled into the assembly instruction “lw a3, 0(zero),” which means loading a word from memory address 0, located in the memory region protected by the operating system. As a result, this leads to an invalid access, causing the program to crash.
+6. What is the name of the binary that was running when the kernel paniced? What is its process id (pid)?
+=> Answer: initcode, id =1
